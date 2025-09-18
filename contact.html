@@ -76,13 +76,14 @@
         }
         
         /* Header Styles */
-        header {
+     header {
             background: white;
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
+            color: var(--dark);
+            padding: 10px 0;
             top: 0;
             z-index: 100;
+            position: sticky;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
         .header-container {
@@ -92,55 +93,58 @@
         }
         
         .logo {
-            width: 70px;
-            height: 70px;
-            border: 3px solid var(--primary);
-            border-radius: 50%;
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
             display: flex;
-            justify-content: center;
             align-items: center;
-            transition: all 0.3s ease;
-        }
-        
-        .logo:hover {
-            transform: rotate(15deg) scale(1.05);
+            color: var(--secondary);
+            width: 80px;
+            height: 80px;
+            /* border: 3px solid #d4af9a;
+            border-radius: 50%; */
+            justify-content: center;
+            padding: 10px;
         }
         
         .logo img {
-            width: 65px;
+            width: 100%;
+            height: auto;
         }
         
-        /* Mobile Menu Toggle */
+        /* Mobile Toggle Button */
         .menu-toggle {
             display: none;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 40px;
-            height: 40px;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
             cursor: pointer;
-            z-index: 1000;
+            padding: 0;
+            z-index: 1001;
         }
         
         .menu-toggle span {
-            width: 30px;
+            width: 100%;
             height: 3px;
-            background: var(--secondary);
-            margin: 3px 0;
+            background-color: var(--dark);
+            border-radius: 5px;
             transition: all 0.3s ease;
-            border-radius: 2px;
         }
         
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 8px);
-        }
-        
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -8px);
+        .close-menu {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1002;
         }
         
         .nav-menu {
@@ -149,7 +153,7 @@
         }
         
         .nav-menu li {
-            margin: 0 12px;
+            margin: 0 15px;
         }
         
         .nav-menu a {
@@ -175,6 +179,29 @@
             width: 100%;
         }
         
+        .header-contact {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-btn {
+            padding: 10px;
+            background: transparent;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .search-btn:hover {
+            color: var(--primary);
+        }
+        
         .contact-btn {
             padding: 10px 20px;
             background: var(--primary);
@@ -188,7 +215,21 @@
         .contact-btn:hover {
             background: var(--secondary);
             color: white;
-            transform: translateY(-2px);
+        }
+        
+        .mobile-header-contact {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+        
+        .mobile-header-contact .search-btn,
+        .mobile-header-contact .contact-btn {
+            margin: 10px 0;
+            width: 80%;
+            text-align: center;
         }
         
         /* Page Header */
@@ -736,29 +777,46 @@
     <div class="cursor-follower"></div>
 
     <!-- Header -->
-    <header>
+   <header>
         <div class="container header-container">
             <div class="logo">
-                <img src="logo.png" alt="Bellmora Global">
+                <img src="logo.png" alt="Bellmora Global Logo">
             </div>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="#categories">Categories</a></li>
-                <li><a href="#products">Products</a></li>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <button class="close-menu" id="closeMenu">
+                    <i class="fas fa-times"></i>
+                </button>
                 <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="product.html">Products</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
+                <div class="mobile-header-contact">
+                    <button class="search-btn" id="searchToggleMobile">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                    <a href="#contact" class="contact-btn">Book Now</a>
+                </div>
             </ul>
             
-            <a href="#contact-form" class="contact-btn">Get Quote</a>
-        </div>
-        <div class="menu-toggle" id="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="header-contact">
+                <button class="search-btn" id="searchToggle">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="#contact" class="contact-btn">Book Now</a>
             </div>
+        </div>
     </header>
 
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
@@ -973,24 +1031,49 @@
             });
         });
         
-        // Mobile Menu Toggle
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navMenu = document.getElementById('nav-menu');
-        
-        mobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
-        });
-        
-        // Close menu when clicking on a link
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
+      // Sidebar menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const closeMenu = document.getElementById('closeMenu');
+            const navMenu = document.getElementById('navMenu');
+            const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+            
+            if (menuToggle && closeMenu && navMenu && mobileNavOverlay) {
+                menuToggle.addEventListener('click', function() {
+                    navMenu.classList.add('active');
+                    mobileNavOverlay.classList.add('active');
+                    menuToggle.style.display = 'none';
+                    closeMenu.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                });
+                
+                closeMenu.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    mobileNavOverlay.classList.remove('active');
+                    menuToggle.style.display = 'flex';
+                    closeMenu.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+                
+                mobileNavOverlay.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    mobileNavOverlay.classList.remove('active');
+                    menuToggle.style.display = 'flex';
+                    closeMenu.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+                
+                // Close menu when clicking on links
+                const navLinks = document.querySelectorAll('.nav-menu a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('active');
+                        mobileNavOverlay.classList.remove('active');
+                        menuToggle.style.display = 'flex';
+                        closeMenu.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    });
+                });
+            }
         });
         
         // Form Validation

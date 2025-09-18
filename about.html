@@ -79,7 +79,7 @@
         }
         
     /* Header Styles */
-        header {
+           header {
             background: white;
             color: var(--dark);
             padding: 10px 0;
@@ -104,8 +104,8 @@
             color: var(--secondary);
             width: 80px;
             height: 80px;
-            border: 3px solid #d4af9a;
-            border-radius: 50%;
+            /* border: 3px solid #d4af9a;
+            border-radius: 50%; */
             justify-content: center;
             padding: 10px;
         }
@@ -135,10 +135,6 @@
             background-color: var(--dark);
             border-radius: 5px;
             transition: all 0.3s ease;
-        }
-        
-        .menu-toggle.active {
-            display: none;
         }
         
         .close-menu {
@@ -224,7 +220,6 @@
             color: white;
         }
         
-        /* Mobile Header Contact */
         .mobile-header-contact {
             display: none;
             flex-direction: column;
@@ -239,7 +234,6 @@
             width: 80%;
             text-align: center;
         }
-        
         
         /* Page Header */
         .page-header {
@@ -1407,7 +1401,7 @@
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
 
- <header>
+<header>
         <div class="container header-container">
             <div class="logo">
                 <img src="logo.png" alt="Bellmora Global Logo">
@@ -1428,7 +1422,6 @@
                 <li><a href="categories.html">Categories</a></li>
                 <li><a href="product.html">Products</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
-               
                 <div class="mobile-header-contact">
                     <button class="search-btn" id="searchToggleMobile">
                         <i class="fas fa-search"></i> Search
@@ -1443,7 +1436,6 @@
                 </button>
                 <a href="#contact" class="contact-btn">Book Now</a>
             </div>
-            
         </div>
     </header>
 
@@ -1811,7 +1803,7 @@
                 });
             }
             
-            // Sidebar menu toggle
+          // Sidebar menu toggle
             const menuToggle = document.getElementById('menuToggle');
             const closeMenu = document.getElementById('closeMenu');
             const navMenu = document.getElementById('navMenu');
