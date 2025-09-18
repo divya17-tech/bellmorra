@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products - Bellmora Global | Premium Cosmetics Manufacturer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d4af9a;
+            --secondary: #3d2b3d;
+            --accent: #e6b89c;
+            --light: #f9f4f0;
+            --dark: #2a2025;
+            --text: #333333;
+            --success: #4CAF50;
+            --warning: #FFC107;
+            --info: #2196F3;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease, width 0.3s ease, height 0.3s ease;
+            mix-blend-mode: difference;
+        }
+        
+        .cursor-follower {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.6s ease;
+        }
+        
+        .cursor.hover, .cursor-follower.hover {
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 175, 154, 0.2);
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            color: var(--dark);
+            padding: 10px 0;
+            top: 0;
+            z-index: 100;
+            position: sticky;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            color: var(--secondary);
+            width: 80px;
+            height: 80px;
+            border: 3px solid #d4af9a;
+            border-radius: 50%;
+            justify-content: center;
+            padding: 10px;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: auto;
+        }
+        
+        /* Mobile Toggle Button */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+        
+        .menu-toggle span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--dark);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle.active {
+            display: none;
+        }
+        
+        .close-menu {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1002;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin: 0 15px;
+        }
+        
+        .nav-menu a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .header-contact {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-btn {
+            padding: 10px;
+            background: transparent;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .search-btn:hover {
+            color: var(--primary);
+        }
+        
+        .contact-btn {
+            padding: 10px 20px;
+            background: var(--primary);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-btn:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        /* Mobile Header Contact */
+        .mobile-header-contact {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+        
+        .mobile-header-contact .search-btn,
+        .mobile-header-contact .contact-btn {
+            margin: 10px 0;
+            width: 80%;
+            text-align: center;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://media.istockphoto.com/id/1342439593/photo/woman-shopping-at-an-organic-market-and-looking-at-supplements.jpg?s=612x612&w=0&k=20&c=qEEU8IF8aCLP0Sv3bObTGyjWSk_Md-Va6e0Jxz_Sthk=');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .page-header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 154, 0.1) 0%, transparent 60%);
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .breadcrumb li {
+            margin: 0 10px;
+            font-size: 1.1rem;
+        }
+        
+        .breadcrumb li a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb li a:hover {
+            color: var(--secondary);
+        }
+        
+        .breadcrumb li:not(:last-child):after {
+            content: '/';
+            margin-left: 20px;
+            color: var(--text);
+        }
+        
+        /* Products Intro */
+        .products-intro {
+            padding: 80px 0;
+            background: white;
+            position: relative;
+        }
+        
+        .products-intro:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af9a' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Category Filter */
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background: white;
+            color: var(--secondary);
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 154, 0.3);
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary);
+            color: var(--dark);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-category {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--secondary);
+        }
+        
+        .product-desc {
+            color: var(--text);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .product-btn {
+            padding: 10px 20px;
+            background: var(--primary);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+        
+        .product-btn:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+        
+        .view-more-btn {
+            display: block;
+            text-align: center;
+            margin: 50px auto 0;
+            padding: 14px 32px;
+            background: transparent;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .view-more-btn:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 154, 0.4);
+        }
+        
+        /* Product List Styles */
+        .product-list-section {
+            padding: 80px 0;
+            background: white;
+            position: relative;
+        }
+        
+        .product-list-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af9a' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .category-container {
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .category-title {
+            font-size: 2.2rem;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+        }
+        
+        .product-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .product-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        
+        .product-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .product-icon i {
+            color: var(--dark);
+            font-size: 18px;
+        }
+        
+        .product-name {
+            font-weight: 500;
+            color: var(--text);
+        }
+        
+        .explore-more {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .explore-more:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(61, 43, 61, 0.3);
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(to right, var(--secondary), #4a364a);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='2' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E");
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: white;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--primary);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            margin: 8px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(212, 175, 154, 0.3);
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s ease;
+        }
+        
+        .btn:hover:before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 154, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+            position: relative;
+        }
+        
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='2' fill='%23ffffff' fill-opacity='0.05'/%3E%3C/svg%3E");
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            color: #eee;
+            padding-bottom: 15px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links li:hover {
+            transform: translateX(5px);
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-social {
+            display: flex;
+            margin-top: 25px;
+        }
+        
+        .footer-social a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-5px) rotate(5deg);
+            color: var(--dark);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Search Modal */
+        .search-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .search-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .search-form {
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 20px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .close-search {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-search:hover {
+            transform: rotate(90deg) scale(1.1);
+            color: var(--primary);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 80px 0 40px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .category-title {
+                font-size: 1.8rem;
+            }
+            
+            .cursor, .cursor-follower {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="logo.png" alt="Bellmora Global Logo">
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <button class="close-menu" id="closeMenu">
+                    <i class="fas fa-times"></i>
+                </button>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+               
+                <div class="mobile-header-contact">
+                    <button class="search-btn" id="searchToggleMobile">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                    <a href="#contact" class="contact-btn">Book Now</a>
+                </div>
+            </ul>
+            
+            <div class="header-contact">
+                <button class="search-btn" id="searchToggle">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="#contact" class="contact-btn">Book Now</a>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-form">
+            <input type="text" class="search-input" placeholder="Search products, categories...">
+            <button class="close-search" id="closeSearch">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Premium Products</h1>
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li>Products</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Products Intro -->
+    <section class="products-intro">
+        <div class="container">
+            <div class="section-title">
+                <h2>Premium Quality Cosmetic Products</h2>
+                <p>We offer an extensive range of beauty and personal care products. Our ideals serve as a reminder to sustain our product quality and our passionate drive to deliver the best. Let's start the journey towards trust and growth.</p>
+            </div>
+            
+            <!-- Category Filter -->
+            <div class="category-filter">
+                <button class="filter-btn active" data-filter="all">All Products</button>
+                <button class="filter-btn" data-filter="skincare">Skin Care</button>
+                <button class="filter-btn" data-filter="haircare">Hair Care</button>
+                <button class="filter-btn" data-filter="makeup">Makeup & Beauty</button>
+                <button class="filter-btn" data-filter="babycare">Baby Care</button>
+                <button class="filter-btn" data-filter="mens">Men's Grooming</button>
+                <button class="filter-btn" data-filter="bath">Bath & Body</button>
+            </div>
+            
+            <!-- Products Grid -->
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-category="skincare">
+                    <div class="product-image">
+                        <img src="https://media.istockphoto.com/id/1403673256/photo/a-bottle-of-serum-with-a-pipette-on-a-background-of-white-brick-and-brown-bark-a-close-up-of.jpg?s=612x612&w=0&k=20&c=sTc9tFH6m7jN5_BrwY2O7gKchBVDT1USxcVwqZmMaoE=" alt="Liquorice Serum">
+                        <div class="product-badge">New</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Skin Care</div>
+                        <h3 class="product-title">Liquorice Serum</h3>
+                        <p class="product-desc">Brightening serum with natural liquorice extract to even out skin tone and reduce hyperpigmentation.</p>
+                        <div class="product-actions">
+                            <a href="#" class="product-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card" data-category="skincare">
+                    <div class="product-image">
+                        <img src="https://media.istockphoto.com/id/2198768377/photo/anti-aging-bakuchiol-and-niacinamide-face-serum.jpg?s=612x612&w=0&k=20&c=ekILM_gS7w1jsuGvHGOuYGJhlz43n7KRakLg0owtmlA=" alt="Bakuchiol Serum">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Skin Care</div>
+                        <h3 class="product-title">Bakuchiol Serum</h3>
+                        <p class="product-desc">Natural alternative to retinol that smooths fine lines and improves skin texture without irritation.</p>
+                        <div class="product-actions">
+                            <a href="#" class="product-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card" data-category="haircare">
+                    <div class="product-image">
+                        <img src="https://media.istockphoto.com/id/1291094767/photo/blank-amber-bottle-with-essential-oil-peppermint-with-mint-leaves.jpg?s=612x612&w=0&k=20&c=Fv672Ukr8X-B2LgR4hRLsGu72NNXhHxxQ-OjDdWjo30=" alt="Batana Oil">
+                        <div class="product-badge">Popular</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Hair Care</div>
+                        <h3 class="product-title">Batana Oil</h3>
+                        <p class="product-desc">Deeply nourishing oil that promotes hair growth, reduces breakage, and adds natural shine.</p>
+                        <div class="product-actions">
+                            <a href="#" class="product-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card" data-category="skincare">
+                    <div class="product-image">
+                        <img src="https://media.istockphoto.com/id/2155162643/photo/flat-lay-composition-with-under-eye-patches-with-flowers-on-a-marble-background-cosmetic.jpg?s=612x612&w=0&k=20&c=hWHhP07BpghjIogRs5VOz6G6D5iQJQuwdG29Df93NiA=" alt="Dark Circle Cream">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Skin Care</div>
+                        <h3 class="product-title">Dark Circle Cream</h3>
+                        <p class="product-desc">Specialized formula with caffeine and vitamin K to reduce dark circles and puffiness around eyes.</p>
+                        <div class="product-actions">
+                            <a href="#" class="product-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card" data-category="babycare">
+                    <div class="product-image">
+                        <img src="https://media.istockphoto.com/id/177127675/photo/cosmetics-plastic-bottle-for-multiusage.jpg?s=612x612&w=0&k=20&c=Kj9Lbd2cYZNqZj6Qkjd0Z9UdimYBDIvivzpzUxRuEjQ=" alt="Baby Face Wash">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Baby Care</div>
+                        <h3 class="product-title">Baby Face Wash</h3>
+                        <p class="product-desc">Gentle, tear-free formula with natural ingredients to cleanse and protect baby's delicate skin.</p>
+                        <div class="product-actions">
+                            <a href="#" class="product-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card" data-category="haircare">
+                    <div class="product-image">
+                        <img src="https://media.istockphoto.com/id/1272081753/photo/red-bentonite-clay-in-the-small-white-bowl-massage-body-brush-and-wooden-hair-comb-diy-facial.jpg?s=612x612&w=0&k=20&c=xbcpQaz_iH4bkiuDclNxxX2o74fJC9PMvmI4TJK-JTw=" alt="Hair Mask">
+                        <div class="product-badge">Bestseller</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Hair Care</div>
+                        <h3 class="product-title">Deep Nourishing Hair Mask</h3>
+                        <p class="product-desc">Intensive treatment with argan oil and keratin to repair damaged hair and restore vitality.</p>
+                        <div class="product-actions">
+                            <a href="#" class="product-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 7 -->
+                <div class="product-card" data-category="makeup">
+                    <div class="product-image">
+                        <img src="https://media.istockphoto.com/id/2229164735/video/petroleum-jelly-in-a-container-on-a-table.jpg?s=640x640&k=20&c=qLJlSke5NCIwdRY-fugk-3GT4GOtVAjHFksjYiksGT4=" alt="Lip Balm">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Makeup & Beauty</div>
+                        <h3 class="product-title">Hydrating Lip Balm</h3>
+                        <p class="product-desc">Moisturizing lip treatment with shea butter and vitamin E to keep lips soft and protected.</p>
+                        <div class="product-actions">
+                            <a href="#" class="product-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 8 -->
+                <div class="product-card" data-category="mens">
+                    <div class="product-image">
+                        <img src="https://media.istockphoto.com/id/1365918009/photo/bearded-man-holding-pippete-with-beard-oil.jpg?s=612x612&w=0&k=20&c=kYM6DPlexxd8aO_HXkAqfWDxPiyv_GKpoTfLTURVPBo=" alt="Beard Oil">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Men's Grooming</div>
+                        <h3 class="product-title">Beard Growth Oil</h3>
+                        <p class="product-desc">Nourishing blend of oils that promotes beard growth while conditioning skin and hair.</p>
+                        <div class="product-actions">
+                            <a href="#" class="product-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="view.html" class="view-more-btn">View All Products</a>
+        </div>
+    </section>
+
+    <!-- Product List Section -->
+    <section class="product-list-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Complete Product Range</h2>
+                <p>Explore our extensive catalog of premium private label products across all categories</p>
+            </div>
+            
+            <!-- Skin Care Category -->
+            <div class="category-container">
+                <h3 class="category-title">SKIN CARE</h3>
+                <ul class="product-list">
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <span class="product-name">Creams And Moisturizers</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-hand-holding-water"></i>
+                        </div>
+                        <span class="product-name">Body Lotions</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-pump-soap"></i>
+                        </div>
+                        <span class="product-name">Face Wash And Cleanser</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <span class="product-name">Sunscreen</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <span class="product-name">Facial Kits</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-mask"></i>
+                        </div>
+                        <span class="product-name">Face Masks & Packs</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <span class="product-name">Skin Toners</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-lips"></i>
+                        </div>
+                        <span class="product-name">Lipcare</span>
+                    </li>
+                </ul>
+                <a href="#" class="explore-more">Explore More</a>
+            </div>
+            
+            <!-- Baby Care Category -->
+            <div class="category-container">
+                <h3 class="category-title">BABY CARE</h3>
+                <ul class="product-list">
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                        <span class="product-name">Stretch Mark Cream</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-baby-carriage"></i>
+                        </div>
+                        <span class="product-name">Diaper Rash Cream</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-shower"></i>
+                        </div>
+                        <span class="product-name">Baby Tear Free Shampoo</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <span class="product-name">Baby Face Cream</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-hands-wash"></i>
+                        </div>
+                        <span class="product-name">Baby Tip To Toe Wash</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <span class="product-name">Nipple Butter</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-bath"></i>
+                        </div>
+                        <span class="product-name">Baby Wash</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-air-freshener"></i>
+                        </div>
+                        <span class="product-name">Baby Conditioner</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <span class="product-name">Baby Sunscreen</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-soap"></i>
+                        </div>
+                        <span class="product-name">Baby Soap</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Hair Care Category -->
+            <div class="category-container">
+                <h3 class="category-title">HAIR CARE</h3>
+                <ul class="product-list">
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-pump-soap"></i>
+                        </div>
+                        <span class="product-name">Shampoo/Cleanser</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-air-freshener"></i>
+                        </div>
+                        <span class="product-name">Conditioners</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-oil-can"></i>
+                        </div>
+                        <span class="product-name">Hair Oils & Treatments</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-mask"></i>
+                        </div>
+                        <span class="product-name">Hair Mask</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <span class="product-name">Hair Colour</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <span class="product-name">Styling Creams</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <span class="product-name">Hair Serum</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Natural Oils Category -->
+            <div class="category-container">
+                <h3 class="category-title">NATURAL OILS</h3>
+                <ul class="product-list">
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-oil-can"></i>
+                        </div>
+                        <span class="product-name">Essential Oil</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <span class="product-name">Carrier Oil</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <span class="product-name">Fragrance Oil</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-cookie-bite"></i>
+                        </div>
+                        <span class="product-name">Flavour Oils</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <span class="product-name">Herbal Extracts</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-flower"></i>
+                        </div>
+                        <span class="product-name">Flower Extracts</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-mortar-pestle"></i>
+                        </div>
+                        <span class="product-name">Herbal Liquid Extracts</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-lips"></i>
+                        </div>
+                        <span class="product-name">Lip Balm Flavor Oils</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Men's Grooming Category -->
+            <div class="category-container">
+                <h3 class="category-title">MEN'S GROOMING</h3>
+                <ul class="product-list">
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <span class="product-name">Hair Care & Styling</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span class="product-name">Beard Grooming</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-oil-can"></i>
+                        </div>
+                        <span class="product-name">Beard Oil</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-paste"></i>
+                        </div>
+                        <span class="product-name">Beard Wax</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-pump-soap"></i>
+                        </div>
+                        <span class="product-name">Beard Cream</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-shower"></i>
+                        </div>
+                        <span class="product-name">Beard Wash</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-soap"></i>
+                        </div>
+                        <span class="product-name">Shaving Cream/gel</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-soft"></i>
+                        </div>
+                        <span class="product-name">Beard Softener</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-band-aid"></i>
+                        </div>
+                        <span class="product-name">Pre/post Shave Gel</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Bath & Body Category -->
+            <div class="category-container">
+                <h3 class="category-title">BATH & BODY</h3>
+                <ul class="product-list">
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-shower"></i>
+                        </div>
+                        <span class="product-name">Body Wash</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-bath"></i>
+                        </div>
+                        <span class="product-name">Bath Gels</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-soap"></i>
+                        </div>
+                        <span class="product-name">Soaps</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-oil-can"></i>
+                        </div>
+                        <span class="product-name">Bath Oils</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <span class="product-name">Body Oils</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-pump-soap"></i>
+                        </div>
+                        <span class="product-name">Face Wash</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Oral Care Category -->
+            <div class="category-container">
+                <h3 class="category-title">ORAL CARE</h3>
+                <ul class="product-list">
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-tooth"></i>
+                        </div>
+                        <span class="product-name">Charcoal Teeth Powder</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-tooth"></i>
+                        </div>
+                        <span class="product-name">Charcoal Toothpaste</span>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-icon">
+                            <i class="fas fa-hand-holding-water"></i>
+                        </div>
+                        <span class="product-name">Pulling Oil Mouth Wash</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Create Your Product Line?</h2>
+                <p>Partner with Bellmora Global to bring your cosmetic vision to life. Our team of experts will guide you through every step of the process.</p>
+                <a href="contact.html" class="btn">Get Started</a>
+                <a href="services.html" class="btn btn-outline">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Bellmora Global</h3>
+                    <p>Manufacturing premium quality cosmetics with a commitment to excellence and innovation.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#categories">Categories</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Products</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Skin Care</a></li>
+                        <li><a href="#">Hair Care</a></li>
+                        <li><a href="#">Makeup & Beauty</a></li>
+                        <li><a href="#">Baby Care</a></li>
+                        <li><a href="#">Men's Grooming</a></li>
+                        <li><a href="#">Bath & Body</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Cosmetic Lane, Mumbai, India</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> info@bellmoraglobal.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 6:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Bellmora Global. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+        
+        // Add hover effect to links and buttons
+        const hoverElements = document.querySelectorAll('a, button, .filter-btn, .product-card, .product-item');
+        
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                cursorFollower.classList.add('hover');
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                cursorFollower.classList.remove('hover');
+            });
+        });
+           // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                productCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.product-card, .section-title, .filter-btn, .category-container, .product-item');
+            
+            elements.forEach(el => {
+                const position = el.getBoundingClientRect();
+                
+                // If element is in viewport
+                if(position.top < window.innerHeight - 100) {
+                    el.style.opacity = 1;
+                    el.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animation
+        window.addEventListener('load', () => {
+            const productCards = document.querySelectorAll('.product-card');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const productItems = document.querySelectorAll('.product-item');
+            const categoryContainers = document.querySelectorAll('.category-container');
+            
+            productCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            filterBtns.forEach(btn => {
+                btn.style.opacity = 0;
+                btn.style.transform = 'translateY(20px)';
+                btn.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            productItems.forEach((item, index) => {
+                item.style.opacity = 0;
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                
+                setTimeout(() => {
+                    item.style.opacity = 1;
+                    item.style.transform = 'translateY(0)';
+                }, 100 + (index * 50));
+            });
+            
+            categoryContainers.forEach(container => {
+                container.style.opacity = 0;
+                container.style.transform = 'translateY(30px)';
+                container.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            });
+            
+            document.querySelector('.section-title').style.opacity = 0;
+            document.querySelector('.section-title').style.transform = 'translateY(30px)';
+            document.querySelector('.section-title').style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            
+            setTimeout(() => {
+                animateOnScroll();
+            }, 500);
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+           // Search functionality
+            const searchToggle = document.getElementById('searchToggle');
+            const searchToggleMobile = document.getElementById('searchToggleMobile');
+            const searchModal = document.getElementById('searchModal');
+            const closeSearch = document.getElementById('closeSearch');
+            
+            if (searchToggle && searchModal && closeSearch) {
+                searchToggle.addEventListener('click', function() {
+                    searchModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+                
+                if (searchToggleMobile) {
+                    searchToggleMobile.addEventListener('click', function() {
+                        searchModal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                        navMenu.classList.remove('active');
+                        menuToggle.style.display = 'flex';
+                        closeMenu.style.display = 'none';
+                        mobileNavOverlay.classList.remove('active');
+                    });
+                }
+                
+                closeSearch.addEventListener('click', function() {
+                    searchModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+            
+            // Sidebar menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const closeMenu = document.getElementById('closeMenu');
+            const navMenu = document.getElementById('navMenu');
+            const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+            
+            if (menuToggle && closeMenu && navMenu && mobileNavOverlay) {
+                menuToggle.addEventListener('click', function() {
+                    navMenu.classList.add('active');
+                    mobileNavOverlay.classList.add('active');
+                    menuToggle.style.display = 'none';
+                    closeMenu.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                });
+                
+                closeMenu.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    mobileNavOverlay.classList.remove('active');
+                    menuToggle.style.display = 'flex';
+                    closeMenu.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+                
+                mobileNavOverlay.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    mobileNavOverlay.classList.remove('active');
+                    menuToggle.style.display = 'flex';
+                    closeMenu.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+                
+                // Close menu when clicking on links
+                const navLinks = document.querySelectorAll('.nav-menu a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('active');
+                        mobileNavOverlay.classList.remove('active');
+                        menuToggle.style.display = 'flex';
+                        closeMenu.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    });
+                });
+            };
+    </script>
+</body>
+</html>
